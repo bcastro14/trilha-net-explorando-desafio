@@ -8,30 +8,11 @@ namespace DesafioProjetoHospedagem.Models
 
         public Reserva() { }
 
-        public Reserva(int diasReservados)
+        public Reserva(List<Pessoa> hospedes, Suite suite, int diasReservados)
         {
-            DiasReservados = diasReservados;
-        }
-
-        public void CadastrarHospedes(List<Pessoa> hospedes)
-        {
-            // Verificando se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            int capacidadeSuite = Suite.Capacidade;
-            int quantidadeHospedes = hospedes.Count;
-            if (capacidadeSuite >= quantidadeHospedes)
-            {
-                Hospedes = hospedes;
-            }
-            else
-            {
-                // Retornando uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                throw new ArgumentException("A suite não comporta essa quantidade de hóspedes.");
-            }
-        }
-
-        public void CadastrarSuite(Suite suite)
-        {
+            Hospedes = hospedes;
             Suite = suite;
+            DiasReservados = diasReservados;
         }
 
         public int ObterQuantidadeHospedes()
